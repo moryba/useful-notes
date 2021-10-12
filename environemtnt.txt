@@ -1,0 +1,11 @@
+1 - mkdir a folder
+
+2 - digit in the terminal ---> py -m env env
+
+3 - cd dir to env
+
+4 - go to ----> Scripts\activate
+
+5 - install streamlit (or other programs) into the environment ------> pip install streamlit
+
+6 - runnig your application ----> streamlit run app.py
