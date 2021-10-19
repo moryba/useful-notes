@@ -17,16 +17,12 @@
 1 - create a coumpund key -----> compund key = [ID] & "-" & [date]
 
 2 - IF condition:
+    . IF(Expression, Value if TRUE, Value if FALSE)
+    . IF('Customer Data'[]Shopping Frequency] IN {"Daily", "Monthly", "Weekly"},"Frequent Shopper","Infrequent Shopper")
+    
+3 - SWITCH -----> SWITCH("Customer Data"[State], "Texas", "Growth Market", "New York", "Estabilished Market", "Deprioritized Market")
 
-    IF(
-        Expression,
-        Value if TRUE,
-        Value if FALSE)
-        
-    IF(
-        'Customer Data'[]Shopping Frequency] IN {"Daily", "Monthly", "Weekly"},
-         "Frequent Shopper",
-         "Infrequent Shopper")
-        
+
+                
         
        
