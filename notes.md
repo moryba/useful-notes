@@ -1,4 +1,4 @@
-#Build an environment
+# Build an environment
 
 1 - mkdir a folder
 
@@ -12,7 +12,7 @@
 
 6 - runnig your application ----> streamlit run app.py
 
-#PowerBI - DAX formulas
+# PowerBI - DAX formulas
 
 1 - create a coumpund key -----> compund key = [ID] & "-" & [date]
 
