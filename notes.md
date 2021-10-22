@@ -22,7 +22,10 @@
     
 3 - SWITCH -----> SWITCH("Customer Data"[State], "Texas", "Growth Market", "New York", "Estabilished Market", "Deprioritized Market")
 
-
+# Data Viz
+- A Complete Guide to Bar Charts[https://chartio.com/learn/charts/bar-chart-complete-guide/]
+- A Complete Guide to Area Charts[https://chartio.com/learn/charts/area-chart-complete-guide/]
+- Change How Visuals Interact in a Report[https://docs.microsoft.com/en-us/power-bi/create-reports/service-reports-visual-interactions]
                 
         
        
