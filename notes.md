@@ -34,10 +34,10 @@
 
 # How to create a dynamic date table on Power Query
 
-1 - Create a query for the Start Date ----->Strat = Date.StartOfYear(List.Min(#"Name of the table"[Column Date]))
-2 - Create a query for the End Date ------> End = Date.StartOfYear(List.Max(#"Name of the table"[Column Date]))
-3 - Create a list and convert it into a table ------> ={Number.From(#"Start")..Number.From(#"End")}
-4 - suggestions---> if you wanna put zero before the number of the month: = Text.PadStart(Text.From([Month Name]),2,"0")
+- Create a query for the Start Date ----->Strat = Date.StartOfYear(List.Min(#"Name of the table"[Column Date]))
+- Create a query for the End Date ------> End = Date.StartOfYear(List.Max(#"Name of the table"[Column Date]))
+- Create a list and convert it into a table ------> ={Number.From(#"Start")..Number.From(#"End")}
+- suggestions---> if you wanna put zero before the number of the month: = Text.PadStart(Text.From([Month Name]),2,"0")
                 
         
        
