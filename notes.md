@@ -38,6 +38,10 @@
 - Create a query for the End Date ------> End = Date.StartOfYear(List.Max(#"Name of the table"[Column Date]))
 - Create a list and convert it into a table ------> ={Number.From(#"Start")..Number.From(#"End")}
 - suggestions---> if you wanna put zero before the number of the month: = Text.PadStart(Text.From([Month Name]),2,"0")
+
+# Some cmd prompt
+
+- append multiple files------> copy *.csv combine.csv
                 
         
        
