@@ -24,7 +24,7 @@
     
 3 - SWITCH -----> SWITCH("Customer Data"[State], "Texas", "Growth Market", "New York", "Estabilished Market", "Deprioritized Market")
 
-4 - LOOKUPVALUE(Table2[column Interested), Table2[Key], Table1[Key]
+4 - LOOKUPVALUE(Table2[column Interested), Table2[Key], Table1[Key])
 
 5 - SUMX(Table, Table[Column]) ----> the output is the sum of all the values in a column
 
