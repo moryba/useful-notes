@@ -17,7 +17,9 @@
 1 - create a coumpund key -----> compund key = [ID] & "-" & [date]
 
 2 - IF condition:
+
     - IF(Expression, Value if TRUE, Value if FALSE)
+    
     - IF('Customer Data'[Shopping Frequency] IN {"Daily", "Monthly", "Weekly"},"Frequent Shopper","Infrequent Shopper")
     
 3 - SWITCH -----> SWITCH("Customer Data"[State], "Texas", "Growth Market", "New York", "Estabilished Market", "Deprioritized Market")
@@ -25,6 +27,8 @@
 4 - LOOKUPVALUE(Table2[column Interested), Table2[Key], Table1[Key]
 
 5 - SUMX(Table, Table[Column]) -> the output is the sum of all the values in a column
+
+6 - PRODUCT(Table1, Table1[Column] * RELATED
 
 # Data Viz
 - [A Complete Guide to Bar Charts](https://chartio.com/learn/charts/bar-chart-complete-guide/)
