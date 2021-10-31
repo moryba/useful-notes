@@ -26,9 +26,9 @@
 
 4 - LOOKUPVALUE(Table2[column Interested), Table2[Key], Table1[Key]
 
-5 - SUMX(Table, Table[Column]) -> the output is the sum of all the values in a column
+5 - SUMX(Table, Table[Column]) ----> the output is the sum of all the values in a column
 
-6 - PRODUCT(Table1, Table1[Column] * RELATED
+6 - Table1[Column1] * RELATED(Table2[Column2])) ----> RELATED fuction give us the product between column1 in table1 and the column2 of the table2. Keep in mind that the two tables must have a relationship 
 
 # Data Viz
 - [A Complete Guide to Bar Charts](https://chartio.com/learn/charts/bar-chart-complete-guide/)
