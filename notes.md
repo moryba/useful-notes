@@ -52,7 +52,7 @@
 
 List of useful links:
 
-- Text Input AutoHeight : https://www.youtube.com/watch?v=Rh20he80OLA
+- [Text Input AutoHeight](https://www.youtube.com/watch?v=Rh20he80OLA)
 
 # Some cmd prompt
 
