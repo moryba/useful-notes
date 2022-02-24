@@ -48,6 +48,12 @@
 - Create a list and convert it into a table ------> ={Number.From(#"Start")..Number.From(#"End")}
 - suggestions---> if you wanna put zero before the number of the month: = Text.PadStart(Text.From([Month Name]),2,"0")
 
+# Power App - some useful links
+
+List of useful links:
+
+- Text Input AutoHeight : https://www.youtube.com/watch?v=Rh20he80OLA
+
 # Some cmd prompt
 
 - append multiple files------> copy *.csv combine.csv
