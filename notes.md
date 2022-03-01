@@ -57,6 +57,7 @@ List of useful links:
 # Some cmd prompt
 
 - append multiple files------> copy *.csv combine.csv
+- download this browser to run selenium edge: https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/
                 
         
        
