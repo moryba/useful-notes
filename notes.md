@@ -58,6 +58,65 @@ List of useful links:
 
 - append multiple files------> copy *.csv combine.csv
 - download this browser to run selenium edge: https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/
-                
+
+# Regular expression
+
+## Shorthand character classes
+
+\w ---> the "word character" class represents the regex range [A - Za - z0 - 9_], and it matches a single uppercase character, lowercase character, digit or underscore
+
+\d ---> the "digit character" class represents the regex range [0-9], and it matches a single digit character
+
+\s ---> the "whitespace character" class represents the regex range [ \t\r\n\f\v], matchinga single space, tab, carriage return, line break, from feed, or vertical tab
+
+For example, the regex \d\s\w\w\w\w\w\w\w matches a digit character, followed by a whitespace character, followed by 7 word characters. Thus the regex completely matches the text 3 monkeys. 
+
+In addition to the shorthand character classes \w, \d, and \s, we also have access to the negated shorthand character classes! These shorthands will match any character that is NOT in the regular shorthand classes. These negated shorthand classes include:
+
+- \W ---> the "non-word charcater" class represts the regex range [^A-Za-z0-9_], matching any character tha is not included in the range represented by \w
+- \D ---> the "non-digit character" class represents the regex range [^0-9], matching any character that is not included in the range represented by \d
+- \S ---> the "non-whitespace character" class represents the regex range [^\t\r\n\f\v], matching any character that is not included in the range represented by \s
+
+## Grouping
+
+The regext I love (baboons|gorillas) will match the text I love and then match either baboons or gorillas, as the grouping limits the reach of the | to the text within the parentheses. 
+
+These groups are also called capture groups, as they have the power to select, or capture, a substring from our matched text. 
+
+## Quantifiers - Fixed
+
+Instead of writing the regex \w\w\w\w\w\w\s\w\w\w\w\w\w, which would match 6 word charcters, followed by a whitespace charcter, and then followed by more characters, such as in the text rhesus monkey, there is a a better way to denote the quantity of characters we want to match on. 
+
+- \w{3} will match exactly 3 word characters
+- \w{4,7} will match at minimum 4 word characters and at maximum 7 word characters
+
+The regex roa{3}r will match the characters ro followed by 3 as, and then the character r, such as in the text roaaar. The regex roa{3,7}r will match the characters ro followed by at least 3 as and at most 7 as, followed by an r, matching the strings roaaar, roaaaaar and roaaaaaaar.
+
+
+## Quantifiers - Optional
+
+Optional quantifiers, indicated by the question mark ?, allow us to indicate a character in a regex is optional, or can appear either 0 times or 1 time. For example, the regex humou?r matches the characters humo, then either 0 occurrences or 1 occurrence of the letter u, and finally the letter r. Note ? only applies to the character directly before it. 
+
+With all quantifiers, we can take advantage of grouping to make even more  advanced regexes. The regex 'The monkey ate a (rotten )?banana' will completely match both 'The monkey ate a rotten banana' and 'The monkey ate a banana'.
+
+Since the ? is a metacharacter, you need to use the escape character in your regex in order to match a question mark ? in a piece of text. The regex 'Aren't owl monkeys beautiful\?' will thus completely match the text 'Aren't owl monkeys beautiful\?'.
+
+
+## Quantifiers - 0 or More, 1 or More
+
+The Kleene star, denoted with the asterisk *, is also a quantifier, and matches the preceding character 0 or more times. This means that the character doesn’t need to appear, can appear once, or can appear many many times.
+
+The regex meo*w will match the characters me, followed by 0 or more os, followed by a w. Thus the regex will match mew, meow, meooow, and meoooooooooooow.
+
+Another useful quantifier is the Kleene plus, denoted by the plus +, which matches the preceding character 1 or more times.
+
+The regex meo+w will match the characters me, followed by 1 or more os, followed by a w. Thus the regex will match meow, meooow, and meoooooooooooow, but not match mew.
+
+Like all the other metacharacters, in order to match the symbols * and +, you need to use the escape character in your regex. The regex My cat is a \* will completely match the text My cat is a *.
+
+
+
+
+
         
        
