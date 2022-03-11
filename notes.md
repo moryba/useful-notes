@@ -114,6 +114,10 @@ The regex meo+w will match the characters me, followed by 1 or more os, followed
 
 Like all the other metacharacters, in order to match the symbols * and +, you need to use the escape character in your regex. The regex My cat is a \* will completely match the text My cat is a *.
 
+## Anchors
+
+The anchors hat ^ and the dollar sign $ are used to match text at the start and the end of a string, respctively.  For example, the regex ^Monkeys: my mortal enemy$ will completely match the text Monkeys: my mortal enemy but not match Spider Monkeys: my mortal enemy in the wild or Spider Monkeys: my mortal enemy in the wild. In fact, the ^ ensures that the matched text begins with Monkeys, and the $ ensures the matched text ends with enemy. 
+
 
 
 
