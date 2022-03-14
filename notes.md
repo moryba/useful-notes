@@ -119,8 +119,134 @@ Like all the other metacharacters, in order to match the symbols * and +, you ne
 The anchors hat ^ and the dollar sign $ are used to match text at the start and the end of a string, respctively.  For example, the regex ^Monkeys: my mortal enemy$ will completely match the text Monkeys: my mortal enemy but not match Spider Monkeys: my mortal enemy in the wild or Spider Monkeys: my mortal enemy in the wild. In fact, the ^ ensures that the matched text begins with Monkeys, and the $ ensures the matched text ends with enemy. 
 
 
+# Text Preprocessing
+
+<img width="383" alt="text_preprocessing" src="https://user-images.githubusercontent.com/24205674/158189735-86fb5e5e-86b6-47bd-8640-b0904a4699ac.PNG">
+
+Text preprocessing is an approach for cleaning and preparing text data for use in a specific context. It involves the following steps:
+
+- Using Regex & NLTK libraries
+- Noise Removal - removing unnecessary characters and formatiing
+- Tokenization - break multi-word strings into smaller components
+- Normalization - acatch-all term for processing data; this includes stemming and lemmatization
+
+## Noise Removal
+
+It is possible to use the .sub() method in Python's regular epresion (re) library for most of your oise removal needs. The .sub() method has three required arguments:
+
+- pattern - a regular expression that is searched for in the input string. There must be an r preceding the string to indicate it is a raw string, which treats backslashes as literal characters. 
+- replacement_text - text that replaces all matches in the input string
+- input - the input string that will be edited by the .sub() method
+below an example in which we replace all tag <p> with '':
+import re
+text = "<p>    This is a paragraph</p>"
+result = re.sub(r'<.?p>','',text)
+print(result)------->    This is a paragraph
+
+Anther example in which we want to remove the white space before the phrase:
+import re
+text = "    This is a paragraph"
+result = re.sub(r'\s{4}','',text)
+
+print(result)------->This is a paragraph
+
+## Tokenization 
+
+The method for breaking text into smaller components is called tokenization and the individual components are called tokens. A few common operations that require tokenization include:
+- finding how many words or sentences appear in text
+- determining how many times a specific word or phrase exists
+- accounting fr which terms are likely to co-occur
+
+To tokenize individual words, we can use nltk's word_tokenize() function. The functon accepts a string and returns a list of words:
+
+from nltk.tokenize import word_tokeniz
+
+text = "Tokenize this text"
+tokenized = word_tokenize(text)
+
+print(tokenized) --------------> ["Tokenize", "this", "text"]
+
+To tokenize at the sentence level, we can use sent_tokenize() from same module.
+from nltk.tokenize import sent_tokenize
+
+text = "Tokenize this sentence. Also, tokenize this sentence."
+tokenized = sent_tokenize(text)
+
+print(tokenized) --------------> ['Tokenize this sentence.', 'Also, tokenize this sentence.']
+
+## Normalization
+
+Tokenization and noise removal are staples of almost all text pre-processing pipelines. However, some data may require futher processing through text normalization. Text normalization is a catch-all term for various text pre-processing tasks. Some are:
+- Uper or lowercasing
+- Stopword removal
+- Stemming - bluntly removing prefixes and suffixes from a word
+- Lemmatization - replacing a single-word token with its root
+
+The simplest of these approaches is to change the case of a string. We can use Python's built-in String methods to make a sting all uppercase or lowercase:
+my_string = 'tHiS HaS a MiX oF cAsEs'
+
+print(my_string.upper())--------------> 'THIS HAS A MIX OF CASES'
+
+print(my_string.lower())--------------> 'this has a mix of cases'
 
 
+## Stopword Removal
 
+Stopwords are words that we remove during preprocessing when we don't care about sentence structure. They are usually the most common words in a language and don't provide any information about the tone of statement. They include words such as "a", "an", and "the".
+
+NLTK provides a built-in library with these words. You can import them using the following statement:
+
+from nltk.corpus import stopwords
+stop_words = set(stopwords.words('english'))
+
+Now that we have the words saved to stop_words, we can use tokenization and a list comprehension to remove them from a sentence:
+nbc_statement =  "NBC was founded in 1926 making it the oldest major broadcast network in the USA"
+
+word_tokens = word_tokenize(nbc_statement) 
+
+statement_no_stop = [word for word in word_tokens if word not in stop_words]
+
+print(statement_no_stops) --------------> ['NBC', 'founded', '1926', 'making', 'oldest', 'major', 'broadcast', 'network', 'USA']
+
+## Stemmming
+
+In natural language processing, stemming is the text preprocessing normalization task concerned with bluntly removing word affixes (prefixes and suffixes). For example, stemming would cast the word "going" to "go". This is a common method used by search engines to improve matching between user input and website hits.
+
+NLTK has a built-in stemmer called PorterStemmer. You can use it with a list comprehension to stem each word in a tokenized list of words.
+ 
+from nltk.stem import PorterStemmer
+stemmer = PortesStemmer()
+
+tokenized = ['NBC', 'was', 'founded', 'in', '1926', '.', 'This', 'makes', 'NBC', 'the', 'oldest', 'major', 'broadcast', 'network', '.']
+
+stemmed = [stemmer.stem(token) for token in tokenized]
+
+print(stemmed) --------------> ['nbc', 'wa', 'found', 'in', '1926', '.', 'thi', 'make', 'nbc', 'the', 'oldest', 'major', 'broadcast', 'network', '.']
         
-       
+## Lemmatization
+
+Lemmatization is a method for casting words to their root forms. This is a more involved process than stemming, because it reqires the method to know the part of speech for each word. Since lemmatization requires the part of speech, it is a less efficient approach than stemming.
+
+We can use NLTK's WordNetLemmatizer to lemmatize text:
+
+from nltk.stem import WordNetLemmatizer
+lemmatizer = WordNetLemmatizer()
+
+tokenized = ["NBC", "was", "founded", "in", "1926"]
+
+lemmatized = [lemmatizer.lemmatize(token) for token in tokenized]
+
+print(lemmatized) -------------> ["NBC", "wa", "founded", "in", "1926"]
+
+The result saved to lemmatized contains 'wa', while the rest of the words remain the same. Not too useful. This happened because lemmatize() treats every word as a noun. To take advantage of the power of lemmatization, we need to tag each word in our text.
+
+# Part-of-Speech Tagging
+
+To improve the performance of lemmatization, we need to find the pwer of speech for each word in our string. 
+
+- import wordnet and counter: from nltk.corpus import wordnet, from collections import Counter
+- get synonyms with wordnet.synsets(word)
+- create a Counter() object and set each value to the count of the number of synonyms that fall into each part of speech: pos_counts["n"] = len(  [ item for item in probable_part_of_speech if item.pos()=="n"]  )
+- return the most common part of speech: most_likely_part_of_speech = pos_counts.most_common(1)[0][0]
+
+
