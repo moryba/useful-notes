@@ -247,6 +247,6 @@ To improve the performance of lemmatization, we need to find the pwer of speech 
 - import wordnet and counter: from nltk.corpus import wordnet, from collections import Counter
 - get synonyms with wordnet.synsets(word)
 - create a Counter() object and set each value to the count of the number of synonyms that fall into each part of speech: pos_counts["n"] = len(  [ item for item in probable_part_of_speech if item.pos()=="n"]  )
-- return the most common part of speech: most_likely_part_of_speech = pos_counts.most_common(1)[0][0]
+- return the most common part of speech: now that we have a count for each part of speech, we can use the .most_common() counter method to find and return the most likely part of speech: most_likely_part_of_speech = pos_counts.most_common(1)[0][0]
 
 
