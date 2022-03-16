@@ -286,3 +286,29 @@ Instead of compiling the regular expression first and then looking for a match i
 result = re.match("[A-Za-z]{4}, "Toto")
 
 With this syntax, re'S .match() method takes a regular expression pattern as the first argument and a string as the second argument. 
+
+## Searching and finding
+
+You can make your regular expression matches even more dynamic with the help of the .search() method. Unlike .match() which will only find matches at the start of a string, .search() will look left to right through an entire piece of text and return a match object for the first match to the regular expression given. If no match is found, .search() will return None. For example, to search for a sequence of 8 word characters in the string:
+
+result = re.search("\w{8}","Are you a Munchkin?")
+
+Using .search() on the string above will find a match of "Munchkin", while using .match() on the same string would return None!
+
+So far you have used methods that only return one piece of matching text. What if you want to find all the occurrences of a word or keyword in a piece of text to determine a frequency count?Step in the .findall() method!
+
+.findall( will return a list of all non-overlapping matches of regular expression in the string. Consider the below piece of text:
+
+text = "Everything is green here, while in the country of the Munchkins blue was the favorite color. But the people do not seem to be as friendly as the Munchkins, and I'm afraid we shall be unable to find a place to pass the night."
+
+So, to find all non-overlapping sequences of 8 word characters in the sentence you can do the following:
+
+list_of_matches = re.findalll("\w{8}", text)
+
+.findall() will tus return the list:
+['Everythi', 'Munchkin', 'favorite', 'friendly', 'Munchkin']
+
+
+
+
+
