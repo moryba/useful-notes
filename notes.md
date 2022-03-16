@@ -257,5 +257,10 @@ lemmatized = [lemmatizer.lemmatize(token, get_part_of_speech(token)) for token i
 
 print(lemmatized) ----------------> ['How', 'old', 'be', 'the', 'country', 'Indonesia']
 
+Below some useful links:
 
-
+- https://www.nltk.org/book/ch03.html
+- https://pythonprogramming.net/tokenizing-words-sentences-nltk-tutorial/
+- https://pythonprogramming.net/stop-words-nltk-tutorial/
+- https://pythonprogramming.net/stemming-nltk-tutorial/
+- https://pythonprogramming.net/lemmatizing-nltk-tutorial/
