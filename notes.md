@@ -240,7 +240,7 @@ print(lemmatized) -------------> ["NBC", "wa", "founded", "in", "1926"]
 
 The result saved to lemmatized contains 'wa', while the rest of the words remain the same. Not too useful. This happened because lemmatize() treats every word as a noun. To take advantage of the power of lemmatization, we need to tag each word in our text.
 
-# Part-of-Speech Tagging
+## Part-of-Speech Tagging
 
 To improve the performance of lemmatization, we need to find the part of speech for each word in our string. 
 
@@ -264,3 +264,9 @@ Below some useful links:
 - https://pythonprogramming.net/stop-words-nltk-tutorial/
 - https://pythonprogramming.net/stemming-nltk-tutorial/
 - https://pythonprogramming.net/lemmatizing-nltk-tutorial/
+
+## Natural Language parsing with regular expressions
+
+# Compiling and Matching
+
+.compile() is a method that takes a regular expression pattern as an argument and compiles the pattern into a regular expression object, which you can later use to find matching text. The regular expression object below will exactly match 4 upper or lower case characters. 
