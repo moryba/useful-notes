@@ -320,9 +320,20 @@ The process of identifying and labeling the part of speech of wods is known as p
 - Conjunction: a word that joins words, phrases, o clauses (and)
 - Interjection: a word used to express emotion (Wow)
 
+It is possible to automate the part-of-speech tagging process with nltk's pos_tag() function. The function takes one argument, a list of words in the order they appear in a sentence, and returns a list of tuples, where the first entry in the tuple is a word and the second is the part-of-speech tag. 
 
+word_sentence = ['do', 'you', 'suppose', 'oz', 'could', 'give', 'me', 'a', 'heart', '?']
 
+you can tag the parts of speech as follows:
+part_of_speech_tagged_sentence = pos_tag(word_sentence)
 
+The call to pos_tag() will return the following:
+
+[('do', 'VB'), ('you', 'PRP'), ('suppose', 'VB'), ('oz', 'NNS'), ('could', 'MD'), ('give', 'VB'), ('me', 'PRP'), ('a', 'DT'), ('heart', 'NN'), ('?', '.')]
+
+Abbreviations are given instead of the full part of speech name. Some common abbreviations include: NN for nouns, VB for verbs, RB for adverbs, JJ for adjectives, and DT for determiners. 
+
+![image](https://user-images.githubusercontent.com/24205674/158617330-fbf938a7-3ecb-4cd3-8b24-0449741d26a3.png)
 
 
 
