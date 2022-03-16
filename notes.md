@@ -242,11 +242,20 @@ The result saved to lemmatized contains 'wa', while the rest of the words remain
 
 # Part-of-Speech Tagging
 
-To improve the performance of lemmatization, we need to find the pwer of speech for each word in our string. 
+To improve the performance of lemmatization, we need to find the part of speech for each word in our string. 
 
 - import wordnet and counter: from nltk.corpus import wordnet, from collections import Counter
 - get synonyms with wordnet.synsets(word)
 - create a Counter() object and set each value to the count of the number of synonyms that fall into each part of speech: pos_counts["n"] = len(  [ item for item in probable_part_of_speech if item.pos()=="n"]  )
 - return the most common part of speech: now that we have a count for each part of speech, we can use the .most_common() counter method to find and return the most likely part of speech: most_likely_part_of_speech = pos_counts.most_common(1)[0][0]
+- After finding the most probable part of speech for a given word, we can pass this into our lemmatizer when we find the root for each word. 
+
+Example:
+
+tokenized = ["How", "old", "is", "the", "country", "Indonesia"]
+lemmatized = [lemmatizer.lemmatize(token, get_part_of_speech(token)) for token in tokenized]
+
+print(lemmatized) ----------------> ['How', 'old', 'be', 'the', 'country', 'Indonesia']
+
 
 
