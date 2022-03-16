@@ -270,3 +270,19 @@ Below some useful links:
 # Compiling and Matching
 
 .compile() is a method that takes a regular expression pattern as an argument and compiles the pattern into a regular expression object, which you can later use to find matching text. The regular expression object below will exactly match 4 upper or lower case characters. 
+
+regular_expression_object = re.compile("[A-Za-z]{4}")
+
+Regular expression objects have a .match() method that takes a string of text as an argument and looks for a single match to the regular expression that starts at the beginning of the string. To see if your regular expression matches the string "Toto" you can do the following:
+
+result = regular_expression_object.match("Toto")
+
+If .match() finds a match that starts at the beginning of the string, it will return a match object. The match object lets you know what piece of text the regular expression matched, and at what index the match begins and ends. If there is no match, .match() will return None. 
+
+With the match object stored in result, you can access the matvhed text by calling result.group(0). If you use a regex containing capture groups, you can access these groups by calling .group() with the appropriately numbered capture group as an argument. 
+
+Instead of compiling the regular expression first and then looking for a match in separate lines of code, you can simplify your match to one line:
+
+result = re.match("[A-Za-z]{4}, "Toto")
+
+With this syntax, re'S .match() method takes a regular expression pattern as the first argument and a string as the second argument. 
