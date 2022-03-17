@@ -395,7 +395,21 @@ By finding all the NP-chunks in a text, you can perform a frequency analysis and
 
 It is ultimately up to you, with your knowledge of the text you are working with, to inerpret the meaning and use-case of the NP-chunks and their frequency of occurrence. 
 
+## Chunking Verb Phrases
+    
+Another type of chunking is VP-chunking, or verb phrase chunking. A verb chunking is a phrase that contains a verb and its complements , objects, or modifiers.
 
+Verb phrases can take a variety of structures, and here you will consider two. The first structure begins with a verb VB of any tense, followed by a noun phrase, and ends with an optional adverb RB of any frm. The second structure switches the order of the verb and the noun phrase, but also ends with an optional adverb. 
+    
+Both structures are considered because verb phrases of each form are essentially the same in meaning. For example, consider the part-of-speech tagged verb phrases given below:
+    - (('said', 'VBD'), ('the', 'DT'), ('cowardly', 'JJ'), ('lion', 'NN'))
+    - ('the', 'DT'), ('cowardly', 'JJ'), ('lion', 'NN')), (('said', 'VBD'),
+ 
+ The chunk grammar to find the first form of verb phrase is given below:
+    
+    chunk_grammar = "VP: {<VB.*><DT>?<JJ>*<NN><RB.?>?}"
+    
+  
     
 
 
