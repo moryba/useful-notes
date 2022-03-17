@@ -393,7 +393,9 @@ With the help of a regular expression defined chunk grammar, you can easily find
     
 By finding all the NP-chunks in a text, you can perform a frequency analysis and identify important, recurring noun phrases. You can also use these NP-chunks as pseudo-topics and tag articles and documents by their highest count NP-chunks! Or perhaps your analysis has you looking at the adjective choices an author makes for different nouns. 
 
-It is ultimately up to you, with your knowledge of the text you are working with, to inerpret the meaning and use-case of the NP-chunks and their frequency of occurence. 
+It is ultimately up to you, with your knowledge of the text you are working with, to inerpret the meaning and use-case of the NP-chunks and their frequency of occurrence. 
+
+
     
 
 
