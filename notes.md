@@ -335,7 +335,35 @@ Abbreviations are given instead of the full part of speech name. Some common abb
 
 ![image](https://user-images.githubusercontent.com/24205674/158617330-fbf938a7-3ecb-4cd3-8b24-0449741d26a3.png)
 
+## Intoduction to Chunking
 
+It is possible to use regular expressions to find patterns in sentence structure that give insight into the meaning of a text. This technique of grouping words by their part-of-speech tag is called **chunking**.
+
+With chunking in nltk, you can define a pattern of parts-of-speech tags using a modified notation of regular expressions. You can then find non-overlapping matches, or chunks of words, in the part-of-speech tagged sentences of a text.
+
+The regular expression you build to find chunks is called chunk grammar. A piece of chunk grammar can be written as follows:
+
+chunk_grammar = "AN: {<JJ><NN>}"
+
+- **AN** is a user-defined name for the kind of chunnk you are searching for. You can use whatever name makes sense given your chunk grammar. In this case AN stands for adjective-noun
+- A pair of curly braces **{}** sorround the actual chunk grammar
+- **<JJ>** operates similarly to a regex character class, matching any adjective
+- **<NN>** matches any noun, singular or plural
+    
+The chunk grammar above will thus match any adjective that is followed by a noun.To use the chunk grammar defined, you must create a nltk RegexParser object and give it a piece of chunk grammar as an argument.
+    
+    chunk_parser = RegexParser(chunk_grammar)
+    
+You can then use the **RegexpParser** object's **.parse()** method, which takes a list of part-of-speech tagged words as an argument, and identifies where such chunks occur in the sentence.
+    
+Consider the part-of-speech tagged sentence below:
+    
+    pos_tagged_sentence = [('where', 'WRB'), ('is', 'VBZ'), ('the', 'DT'), ('emerald', 'JJ'), ('city', 'NN'), ('?', '.')]
+    
+You can chunk the sentence to find any adjectives followed by a noun with the following:
+
+chunked = chunk_parser.parse(pos_tagged_sentence)
+    
 
 
 
