@@ -364,6 +364,39 @@ You can chunk the sentence to find any adjectives followed by a noun with the fo
 
 chunked = chunk_parser.parse(pos_tagged_sentence)
     
+## Chunking Noun Phrases
 
+While you are able to chunk any sequence of parts of speech that you like, there are certain types of chunking that are linguistically helpful for determining meaning and bias in a piece of text. One such type of chunking is NP-chunking, or **noun phrase chunking**. A noun phrase is a phrase that contains a noun and operates, as a unit, as a noun. 
+
+A popular form of noun phrase begins with a determiner DT, which specifies the noun being referenced, followed by any number of adjectives JJ, which describe the noun, and ends with a noun **NN**.
+
+Consider the part-of-speech tagged sentenc below:
+
+ [('we', 'PRP'), ('are', 'VBP'), ('so', 'RB'), ('grateful', 'JJ'), ('to', 'TO'), ('you', 'PRP'), ('for', 'IN'), ('having', 'VBG'), ('killed', 'VBN'), ('the', 'DT'), ('wicked', 'JJ'), ('witch', 'NN'), ('of', 'IN'), ('the', 'DT'), ('east', 'NN'), (',', ','), ('and', 'CC'), ('for', 'IN'), ('setting', 'VBG'), ('our', 'PRP$'), ('people', 'NNS'), ('free', 'VBP'), ('from', 'IN'), ('bondage', 'NN'), ('.', '.')]
+    
+Can you spot the three noun phrases of the form described above? They are:
+    
+    - (('the', 'DT'), ('wicked', 'JJ'), ('witch', 'NN'))
+    - (('the', 'DT'), ('east', 'NN'))
+    - (('bondage', 'NN'))
+
+With the help of a regular expression defined chunk grammar, you can easily find all the non-overlapping noun phrases in a piece of text. Just like in normal regular expressions, you can use quantifiers to indicate how many of each part of speech you want to match. The chunk grammar for a noun phrase can be written as follows:
+    
+    chunk_grammar = "NP: {<DT>?<JJ>*<NN>}"
+    
+    - **NP** is the user-defined name of the chunk you are searching for. In this case NP stands for noun phrase
+    - **<DT>** matches any determiner
+    - **?** is an optional quantifier, matching either **0** or **1** determiners
+    - **<JJ>** matches any adjective
+    - * is the Kleene star quantifier, matching **0** or more occurances of an adjective
+    - **<NN>** matches any noun, singular or plural
+    
+By finding all the NP-chunks in a text, you can perform a frequency analysis and identify important, recurring noun phrases. You can also use these NP-chunks as pseudo-topics and tag articles and documents by their highest count NP-chunks! Or perhaps your analysis has you looking at the adjective choices an author makes for different nouns. 
+
+It is ultimately up to you, with your knowledge of the text you are working with, to inerpret the meaning and use-case of the NP-chunks and their frequency of occurence. 
+    
+
+
+    
 
 
