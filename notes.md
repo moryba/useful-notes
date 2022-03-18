@@ -265,9 +265,9 @@ Below some useful links:
 - https://pythonprogramming.net/stemming-nltk-tutorial/
 - https://pythonprogramming.net/lemmatizing-nltk-tutorial/
 
-## Natural Language parsing with regular expressions
+# Natural Language parsing with regular expressions
 
-# Compiling and Matching
+## Compiling and Matching
 
 .compile() is a method that takes a regular expression pattern as an argument and compiles the pattern into a regular expression object, which you can later use to find matching text. The regular expression object below will exactly match 4 upper or lower case characters. 
 
@@ -308,7 +308,7 @@ list_of_matches = re.findalll("\w{8}", text)
 .findall() will tus return the list:
 ['Everythi', 'Munchkin', 'favorite', 'friendly', 'Munchkin']
 
-# Part-of-speech Tagging
+## Part-of-speech Tagging
 
 The process of identifying and labeling the part of speech of wods is known as part-of-speech tagging!
 - Noun: the name of a person(Moryba), place(Italy), thing or idea(NLP)
