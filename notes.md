@@ -422,9 +422,26 @@ The chunk grammar for the second form of verb phrase is given below:
   
 Just like with NP-chunks, you can find all the VP-chunks in a text and perform a frequency analysis to identify important, recurring verb phrases. These verb phrases can give insight into what kind of action different characters take or how the actions that characters take are described by the author.
     
-Once again, this is the part of the analysis where you get to be creative and 
-    
+## Chunk Filtering
 
+Another option you have to find chunks in your text is chunk filtering. Chunk filtering lets you define what parts of speech you do not want in a chunk and remove them. 
+
+A popular method for performing chunk filtering is to chunk an entire sentence together and then indicate which parts of speech are to be filtered out. If the filtered parts of speech are to be filtered out. If the filtered parts of speech are in the middle of a chunk, it will split the chunk into two separate chunks.
+
+The chunk grammar you can use to perform chunk filtering is given belw:
+    
+    chunk_grammar = """NP: {<.*>+}
+                       }<VB.?|IN>+{"""
+    
+    - **NP** is the user-defined name of the chunk you are searching for. In this case **NP** tands for noun phrase
+    - The brackets **{}** indicate what parts of speech you are chunking. <.*>+ matches every part of speech in the sentence
+    - The inverted brackets **}{** indicate which parts of speech you want to filer from the chunk. <VB.?|IN>+ will filter out any verbs or prepositions
+
+Chunk filtering provides an alternate way for you to search through a text and find the chunks of information useful for your analysis.
+    
+    
+    
+    
 
     
 
