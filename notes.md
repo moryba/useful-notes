@@ -439,10 +439,47 @@ The chunk grammar you can use to perform chunk filtering is given belw:
 
 Chunk filtering provides an alternate way for you to search through a text and find the chunks of information useful for your analysis.
     
+# Rule based chatbot
     
+The first step for any rule-based chatbot is greeting the user and asking them how the chatbot can help. 
+    - Get the name of the user
+    - Ask the user, by name, if they need help
+    - Exit the conversation if the user doesn't want help
+    - Return the user's help request if they want help
     
+## 1. Get the user's name
+We will use the input function to solicit responses from a user. 
     
+    name = input("Hi, I'm a customer support representative. What is your name?")
+ 
+## 2. Ask the user if they need help
+Now that you have the user's name, you can insert it into the following question to ask if they need help:
+    
+    will_help = input(f"Okay {name}, what can I help you with?")
+    
+Asking the user if they need help, with their name, is a personal touch and mimics how a human customer support representative would be trained to respond
+    
+## 3. Exit the conversation if the user does not want help
 
+import re
+import random
+
+class SupportBot:
+  negative_responses = ("nothing", "don't", "stop", "sorry")
     
+if will_help in self.negative_responses:
+    print("Ok, have a great day!")
+    return
+    
+In this code, if the user responds "nothing" to the question, "What can I help you with?", the chatbot will wish the user to have a good day and exit..
+    
+## 4. Return the user's help request if they want help
+    
+Finally, if the user wants help, return their response.
+    
+    return will_help
+    
+ 
+
 
 
