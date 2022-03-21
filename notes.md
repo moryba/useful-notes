@@ -555,5 +555,10 @@ To handle the indefinite length of a conversation, we use a while loop. The whil
     
 At the moment, this code will respond "How can I help you?" to every user response but "stop" - not too useful. However, the while loop, as you will see over the next few exercises, provides a lot of flexibility for processing user input and responding with something that makes sense. 
 
+## Exiting the Conversation
+
+Previously, we made a while loop to respond to a user until they replied "stop". Saying the word "stop" isn't the only, nor is it the typical, way to end a conversation with someone. Instead, you may say something like:
+    - I have to leave, by
+    - I need to go. I'll cine back later
 
 
