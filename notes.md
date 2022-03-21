@@ -581,8 +581,63 @@ In the code above, we iterate over each word in self.exit_commands. If there is 
     while not make_exit(reply):
         reply = input("something ")
     
- if .make_exit()
+ if .make_exit() returns **True**, then the loop will stop executing and the conversation will end. 
     
- returns **True**, then the loop will stop executing and the conversation will end. 
+## Interpreting User Responses 1
     
+At this point, we have built entry and exit paths to our rule-based chatbot. If someone were to interact with it they would be greeted as if they were talking to a human, and they would be able to stop the conversation with a simple statement, like "goodbye".
+    
+Now, we can shift our focus to the conversation. In addiction to greeting and exiting, our chatbot will be able to do two other actions:
+    
+    - Allow a user to pay their bill
+    - Tell the user how they can pay their bill
+    
+We often refer to these actions as intents. Before we can trigger an intent, the chatbot must interpet the user's statement. We often refer to the user's statement as an utterance. In script.py, we added a class variable called **matching phrases**, which is a dictionary with the following:
+    
+    self.matching_phrases = {'how_to_pay_bill': [r'.*how.*pay bills.*', r'.*how.*pay my bill.*']}
+    
+This dictionary contains a list with two strings for regular expression matching:
+    
+ - r'.*how.*pay_bill.*'
+ - r'.*how.*pay my bill.*'
+   
+ ### Interpreting User Responses 2
+ 
+ Now we will use the regular expression library's .match() method to check if a user's utterance matches one of these patterns.
+    
+ Iterate over each item in the dictionary
+    
+ def match_reply(self, reply):
+    for key, values in self.matching_phrases.items():
+      for regex_pattern in values:
+        ...
 
+In the code above, the first **for** loop iterates over each item in the self.matching_phrases dictionary. Inside of this there is another for loop that we use to iterate over the matching patterns in the current list of regex patterns. 
+    
+### Check if user utterance matches a regular expression pattern
+    
+ def match_reply(self, reply):
+   for key, values in self.matching_phrases.items():
+     for regex_pattern in values:
+    
+        found_match = re.match(regex_pattern, reply)
+
+In the code above, we use the **re.match()** function to check if the current regular expression pattern matches the user utterance. 
+
+### Respond if a match was made
+    
+ def match_reply(self, reply):
+    for key, values in self.matching_phrases.items()
+      for regex_pattern in values:
+        
+        found_match = re.match(regex_pattern, reply)
+        ...
+ 
+In the code above, we use a conditional to check if found_match is True. I
+###
+    
+  def match_reply(self, reply):
+    for
+ 
+ 
+    
