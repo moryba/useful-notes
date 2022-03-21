@@ -441,6 +441,33 @@ Chunk filtering provides an alternate way for you to search through a text and f
     
 # Rule based chatbot
     
+import re
+import random
+
+class SupportBot:
+  negative_responses = ("nothing", "don't", "stop", "sorry")
+
+  exit_commands = ("quit", "pause", "exit", "goodbye", "bye", "later")
+
+  def __init__(self):
+    pass
+
+  def welcome(self):
+    name = input("Hi, I'm a customer support representative. Welcome to Codecademy Bank. Before we can help you, I need some information from you. What is your first name and last name? ")
+    
+    will_help = input(f"Okay {name}, what can I help you with?")
+    
+    if will_help in self.negative_responses:
+      print("Okay, have a great day!")
+      return
+    
+    return will_help
+
+# Create a SupportBot instance
+SupportConversation = SupportBot()
+    
+# Call the .welcome() method SupportConversation.welcome()
+    
 The first step for any rule-based chatbot is greeting the user and asking them how the chatbot can help. 
     - Get the name of the user
     - Ask the user, by name, if they need help
@@ -479,7 +506,21 @@ Finally, if the user wants help, return their response.
     
     return will_help
     
- 
+## Handling the convversation
+    
+In script.py, we created a method called .handle_conversation() that will be our central method to continue responding for as long as a user asks questions. Bcause we start our conversation with the .welcome(), the first step is to csll our coversation handling method:
+
+    def welcome(self):
+      ...
+      self.handle_conversation(will_help)
+    
+To handle the indefinite length of a conversation, we use a while loop. The while loop can check if the user wants to continue the conversation after each response. Let's say a user can only exit the conversation by responding with "stop". Our while loop would look something like:
+    
+    def handle_converation(self_reply):
+      while not (reply == "stop"):
+        reply = input("How can I help you?")
+    
+At the moment, this code will respond "How can I help you?" to every user response but "stop" - not too useful. However, the while loop, as you will see over the next few exercises, provides a lot of flexibility for processing user input and responding with something that makes sense. 
 
 
 
