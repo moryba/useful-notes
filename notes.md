@@ -506,7 +506,7 @@ Finally, if the user wants help, return their response.
     
     return will_help
     
-## Handling the convversation
+## Handling the conversation
     
 In script.py, we created a method called .handle_conversation() that will be our central method to continue responding for as long as a user asks questions. Bcause we start our conversation with the .welcome(), the first step is to csll our coversation handling method:
 
