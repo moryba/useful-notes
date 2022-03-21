@@ -558,7 +558,31 @@ At the moment, this code will respond "How can I help you?" to every user respon
 ## Exiting the Conversation
 
 Previously, we made a while loop to respond to a user until they replied "stop". Saying the word "stop" isn't the only, nor is it the typical, way to end a conversation with someone. Instead, you may say something like:
-    - I have to leave, by
-    - I need to go. I'll cine back later
-
+    
+- I have to leave, by
+- I need to go. I'll come back later
+    
+To account for the variety of statements someone could make to exit a conversation, we created a method called .make_exit(). The purprose of this method is to check whether the user wants to leave the conversion. If they do, it returns **True**, if not, it returns False.
+    
+The .make_exit()  method accepts one argument, the user's response. Within the method, we check if the user's response contains a word that is commonly used to exit a conversation, such as "bye" or "exit". In script.py, we save a few of these words in a tuple called exit commands. 
+    
+    def make_exit(self, reply):
+        for exit_command in self.exit_commands:
+            if exit_command in reply:
+                print("Nice taking ith you!")
+                return True
+        
+        return False
+    
+In the code above, we iterate over each word in self.exit_commands. If there is a match between the user's input and a word from self.exit_commands, the method prints "Ok, have a nice day!" and returns True. If there is not a match, then the method returns **False**.
+    
+ We can incorporate this method call into each loop using the following code:
+    
+    while not make_exit(reply):
+        reply = input("something ")
+    
+ if .make_exit()
+    
+ returns **True**, then the loop will stop executing and the conversation will end. 
+    
 
