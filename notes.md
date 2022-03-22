@@ -769,5 +769,24 @@ So, we saw how to build a rule-based chatbot that is capable of serving a couple
     - Slots to improve information passing
 
 In addition to these features, chatbots can be extended to do far more sophisticated tasks by hooking them up to databases or using them to trigger a call to a human support representative. While these concepts are outside the scope of this lesson, it is worth understanding that a chatbot can be more useful when fit into more complex software. 
+
+# Data Structure - class
+
+## Methods
+
+Methods are functions that are defined as part of a class. The first argument in a method is always the object that is calling the method. Convention recommands that we name this first argument self. Methods always have at least one argument.
     
- 
+We define methods similarly to functions, except that they are indented to be part of the class. 
+    
+    class Dog:
+      dog_time_dilation = 7
+    
+      def time_explanation(self):
+        print("Dogs experience {} years for every 1 human year."format(self.dog_time_dilation))
+    
+   pipi_pitbull =Dog()
+   pipi_pitbull.time_explanation()
+    
+Above we created a dog class with a time_explanation method that takes one argument, self, which refers to the object calling the function. We created a Dof named pip_pitbull and called the .time_explanation() method on ourr new object for Pipi.
+    
+Notice we didn't pass any arguments when we called .time_exolanation(), but were able to refer to self in the function body. When you call a method it automaticaly passes the object calling the method as the first argument. 
