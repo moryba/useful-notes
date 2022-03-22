@@ -601,11 +601,11 @@ This dictionary contains a list with two strings for regular expression matching
  - r'.*how.*pay_bill.*'
  - r'.*how.*pay my bill.*'
    
- ### Interpreting User Responses 2
+ ## Interpreting User Responses 2
  
  Now we will use the regular expression library's .match() method to check if a user's utterance matches one of these patterns.
     
- Iterate over each item in the dictionary
+ ### 1.Iterate over each item in the dictionary
     
  def match_reply(self, reply):
     for key, values in self.matching_phrases.items():
@@ -614,7 +614,7 @@ This dictionary contains a list with two strings for regular expression matching
 
 In the code above, the first **for** loop iterates over each item in the self.matching_phrases dictionary. Inside of this there is another for loop that we use to iterate over the matching patterns in the current list of regex patterns. 
     
-### Check if user utterance matches a regular expression pattern
+### 2.Check if user utterance matches a regular expression pattern
     
  def match_reply(self, reply):
    for key, values in self.matching_phrases.items():
@@ -624,7 +624,7 @@ In the code above, the first **for** loop iterates over each item in the self.ma
 
 In the code above, we use the **re.match()** function to check if the current regular expression pattern matches the user utterance. 
 
-### Respond if a match was made
+### 3.Respond if a match was made
     
  def match_reply(self, reply):
     for key, values in self.matching_phrases.items()
@@ -633,11 +633,29 @@ In the code above, we use the **re.match()** function to check if the current re
         found_match = re.match(regex_pattern, reply)
         ...
  
-In the code above, we use a conditional to check if found_match is True. I
-###
+In the code above, we use a conditional to check if **found_match** is True. Here we use an **input()** statement ask another question and then return the **reply**.
+    
+### 4.Respond if a match was not made
     
   def match_reply(self, reply):
-    for
+    for key, values in self.matching_phrases.items():
+      for regex_pattern in values:
+        found_match = re.match(regex_pattern, reply)
+        if found_match:
+          reply = input("Great! I found a matching regular expression. Isn't that cool?")
+          return reply
+    
+      return input("Can you please your questions a different way? ")
+    
+If the **found_match** variables is False, then we return the reponse to the question, "Can you please ask your questions a different way?"
+    
+### 5.Call .match_reply() after every user response
+    
+   def handle_coonversation(self, reply):
+     while not make_exit(reply):
+        reply = match_reply(reply)
+    
+Finally, inside the **while** loop of **.handle_conversation()**, we need to call **.match_reply()** so that we check the user's utterance every time we get a response. 
  
  
     
