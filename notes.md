@@ -656,6 +656,21 @@ If the **found_match** variables is False, then we return the reponse to the que
         reply = match_reply(reply)
     
 Finally, inside the **while** loop of **.handle_conversation()**, we need to call **.match_reply()** so that we check the user's utterance every time we get a response. 
+    
+## Intents
+    
+Now that the chatbot is set up to match user input, we can triigger a desirable response. An intent often maps to a function or method. For example, if you wnated to say to a virtual assistant, "Hey, play music" it may match the user's utterance to a function called play_music().
+    
+def match_reply(self, reply):
+    for key, values in self.matching_phrases.items():
+      for regex_pattern in values:
+        found_match = re.match(regex_pattern, reply)
+        if found_match and key == 'how_to_pay_bill':
+          return self.how_to_pay_bill_intent()
+    
+    return input("I did not understand you. Can you please ask your question again?")
+    
+In the aove code, we call self.how_to_pay_bill_intent() if there is a match and the key is equal to "how_to_pay_bill". Additionally, we return output from self.how_to_pay_bill_intent().  
  
  
     
