@@ -657,7 +657,7 @@ If the **found_match** variables is False, then we return the reponse to the que
     
 Finally, inside the **while** loop of **.handle_conversation()**, we need to call **.match_reply()** so that we check the user's utterance every time we get a response. 
     
-## Intents
+### Intents
     
 Now that the chatbot is set up to match user input, we can triigger a desirable response. An intent often maps to a function or method. For example, if you wnated to say to a virtual assistant, "Hey, play music" it may match the user's utterance to a function called play_music().
     
@@ -672,5 +672,29 @@ def match_reply(self, reply):
     
 In the aove code, we call self.how_to_pay_bill_intent() if there is a match and the key is equal to "how_to_pay_bill". Additionally, we return output from self.how_to_pay_bill_intent().  
  
+ ### Entities
  
+To improve the functionality of a chatbot, we can also parse the user's response and grab important information. For example, if you wanted to play a song from a    virtual assistant, you could say, "Hey, play Beethoven's Fifth Symphony". In this example, Beethoven's Fifth Symphony would be passed into an intent of the virtual
+assistant that plays music. We call the information that a chatbot passes from a user statement to a triggered intent an entity - also referred to as slot. 
+
+In the chatbot built, we need to collect the user's account number when we call the .pay_bill_intent() method to credit their account. We can do this by adding a regular expression, like the one below, to the pay_bill list in self.matching_phrases:
+    
+    regex = r'.*want.*pay.*my.*bill.*account.*numbr.*is (\d+)'
+
+If an utterance matches the above statement the (\d+), called a capture group, will grab the numeric value that follows the pattern. Notice, there is a space between "is" and "(\d+)", rather than a .* pattern. With the regular expression above, we can use the following to grab and print an account number.
+    
+    reply = "i want to pay my bill, my account number is 8889999"
+    found_match = re.match(regex, reply)
+    print(found_match.groups()[0})
+    
+In the above code, the found match variable contains the account number. We can grab this number using the .groups() method. Because there is only one group, we can use found_match.group()[0] to grab the first, and only, group.
+    
+Once we have the group, we can pass it into .pay_bill_intent():
+    
+    def match_reply(self):
+      ...
+      if found_match and (key == 'pay_bill'):
+        return self.pay_bill_intent(found_match.groups()[0])
+    
+In the above code, we pass the account number, as an entity, into the self.pay_bill_intent() method if the found match variable contains the account number. Otherwise, we call the method without passing the account number. 
     
