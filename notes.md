@@ -790,3 +790,72 @@ We define methods similarly to functions, except that they are indented to be pa
 Above we created a dog class with a time_explanation method that takes one argument, self, which refers to the object calling the function. We created a Dof named pip_pitbull and called the .time_explanation() method on ourr new object for Pipi.
     
 Notice we didn't pass any arguments when we called .time_exolanation(), but were able to refer to self in the function body. When you call a method it automaticaly passes the object calling the method as the first argument. 
+    
+## Methods with arguments
+    
+Methods can also take more arguments than just self:
+    
+    class DistanceConverter:
+      kms_in_a_mile = 1.609
+      def how_many_kms(self, miles):
+        return miles  * self.kms_in_a_mile
+    
+    converter = DistanceConverter()
+    kms_in_5_miles = converter.how_many_kms(5)
+    print(kms_in_5_miles)
+    
+Above we defined a DistanceConverter class, iinstantiated it, and used it to convert 5 miles into kilometers. Notice again that even though how_many_kms takes two arguments in its definition, we only pass miles, because self is implicitly passed (and refers to the object converter).
+
+## Contractors
+    
+There are several methods that we can define in a python class that have special behavior. These methods are sometimes called "magic", because they behave differently from regular methods. Another popular term is dunder methods,so-named because they have two underscores (double-underscore abbreviated to "dunder") on either side of them.
+
+The first dunder method we are going to use is __init__() method (note the two underscores before and after the word "init"). This method is used to initialize a newly created object. It is called every time the class is instantiated.
+
+Methods that are used to prepare an object being instantiated are called constructors. The word "constractor" is used to describe similar features in other object-oriented programming languages but programmers who refer to a constractor in Python are usually talking about the __init__() method. 
+    
+    class Shouter:
+      def __init__(self):
+        print("HELLO")
+    
+    shout1 = Shouter() --------> HELLO?!
+    shout2 = Shouter() --------> HELLO?!
+    
+Above we crated a class called Shouter and every time we create an instance of Shouter the program prints out a shout. Pay careful attention to the instantiation syntax we use. Shouter() looks a lot like a function call, doesn't it? If it's a function, can we pass parameters to it? Of course we can, and those parameters will be received by the __init__() method. 
+    
+    class Shouter:
+      def __init__(self, phrase):
+        if type(phrase) == str:
+          print(phrase.upper())
+    
+    shout1 = Shouter("shout") -------> print "SHOUT"
+    shout2 = Shouter("shout") -------> print "SHOUT"
+    shout3 = Shouter("let it all out") --------> print "LET IT ALL OUT"
+    
+Above we have updated our Shouter class to take the additional parameter phrase. When we created each of our projects we passed an argument to the contractor. The constractor takes the argument phrase and, if it is a string, prints out the all-caps version of phrase. 
+    
+## Instance Variables
+    
+We have learned so far that a class is a schematic for a data type and an object is an instance of a class, but why is there such a strong need to diffetentiate the two if each object can only have the methods and class variables the class has? This is because each instance of a class can hold different kinds of data.
+
+The data held by an object is reffered to as an instance variable. Instance variables aren't shared by all instances of a class - they are variables that are specific to the object they are attached to.
+
+Let's say that we have the following class definition:
+    
+class FakeDict:
+    pass
+    
+We can instantitate two different objects from this class, fake_dict1 and fake_dict2, and assign instance variables to these objects using the same attribute notation that was used for accessing class variables.
+
+    fake_dict1 = FakeDick()
+    fake_dict2 = FakeDict()
+    
+    fake_dict1.fake_key = "This works!"
+    fake_dict2.fake_key = "This too!"
+    
+Let's join the two strings together!
+working_string ="{}{}".format(fake_dict1.fake_key, fake_dict2.fake_key)
+print(working_string)
+    
+
+
