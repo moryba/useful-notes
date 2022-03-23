@@ -769,7 +769,14 @@ So, we saw how to build a rule-based chatbot that is capable of serving a couple
     - Slots to improve information passing
 
 In addition to these features, chatbots can be extended to do far more sophisticated tasks by hooking them up to databases or using them to trigger a call to a human support representative. While these concepts are outside the scope of this lesson, it is worth understanding that a chatbot can be more useful when fit into more complex software. 
+ 
+# Retrieval-Based Chatbots
+    
+## Intro to Bag-of-Words    
 
+    The bag-of-words language model is a simple-yet-powerful tool to have up your sleeve when working on natural language processing (NLP). 
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 # Data Structure - class
 
 ## Methods
@@ -885,8 +892,10 @@ The syntax and parameters for these functions look like this:
     - default: the value that is returned if the attribute does not exist (note:this paremeter is optional)
     
  Calling those functions looks like this:
+    
  hasattr(attributeless, "fake_attribute") ---------> return False
  getattr(attributeless, "other_fake_attribute", 800) ----------> returns 800, the default value
     
 Above we checked if the attributeless object has the attibute fake_attribute. Since it does not, hasattr() returned False. After that, we used getattr to attempt to retrive other_fake_attribute. Since other_fake_attribute is not a real attribute on attributeless, our call to getattr() returned the supplied default value 800, instead of throwing an AttributeError. 
-    
+
+
