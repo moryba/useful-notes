@@ -857,5 +857,36 @@ Let's join the two strings together!
 working_string ="{}{}".format(fake_dict1.fake_key, fake_dict2.fake_key)
 print(working_string)
     
+## Attribute Functions
+    
+Instance variables and class variables are both accessed similarly in Python. This is no mistake, they are both considered attributes of an object. If we attempt to access an attribute that is neither a class variable nor an instance variable of the object Python will throw an AttributeError. 
+    
+    class NoCustmAttributes:
+        pass
+    
+    attributeless = No CustomAttributes()
+    
+    try:
+        attributeless.fake_attribute
+    except AttributeError:
+      print("This text gets printed!")
 
-
+ What if we aren't sure if an object has an attribute or not? hasattr() will return True if an object has a given attribute and False otherwise. If we want to get the actual value of the attribute, getattr() is a Python function that will return the value of a given object and attribute. In this function, we can also supply a third argument that will be the default if the object does not have the given attribute. 
+    
+The syntax and parameters for these functions look like this:
+    
+**hasattr(object, "attribute")** has two parameters:
+    - object: the object we are testing to see if it has a certain attribute
+    - attribute: name of attribute we want to see if it exists
+    
+ **getattr(object, "attribute", default) has three parameters (one of which is optional):
+    - object: the object whose attribute we want to evaluate
+    - attribute: name of attribute we want to evaluate
+    - default: the value that is returned if the attribute does not exist (note:this paremeter is optional)
+    
+ Calling those functions looks like this:
+ hasattr(attributeless, "fake_attribute") ---------> return False
+ getattr(attributeless, "other_fake_attribute", 800) ----------> returns 800, the default value
+    
+Above we checked if the attributeless object has the attibute fake_attribute. Since it does not, hasattr() returned False. After that, we used getattr to attempt to retrive other_fake_attribute. Since other_fake_attribute is not a real attribute on attributeless, our call to getattr() returned the supplied default value 800, instead of throwing an AttributeError. 
+    
