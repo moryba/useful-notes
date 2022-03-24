@@ -770,12 +770,6 @@ So, we saw how to build a rule-based chatbot that is capable of serving a couple
 
 In addition to these features, chatbots can be extended to do far more sophisticated tasks by hooking them up to databases or using them to trigger a call to a human support representative. While these concepts are outside the scope of this lesson, it is worth understanding that a chatbot can be more useful when fit into more complex software. 
  
-# Retrieval-Based Chatbots
-    
-## Intro to Bag-of-Words    
-
-    The bag-of-words language model is a simple-yet-powerful tool to have up your sleeve when working on natural language processing (NLP). 
-
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 # Data Structure - class
 
@@ -878,7 +872,7 @@ Instance variables and class variables are both accessed similarly in Python. Th
     except AttributeError:
       print("This text gets printed!")
 
- What if we aren't sure if an object has an attribute or not? hasattr() will return True if an object has a given attribute and False otherwise. If we want to get the actual value of the attribute, getattr() is a Python function that will return the value of a given object and attribute. In this function, we can also supply a third argument that will be the default if the object does not have the given attribute. 
+What if we aren't sure if an object has an attribute or not? hasattr() will return True if an object has a given attribute and False otherwise. If we want to get the actual value of the attribute, getattr() is a Python function that will return the value of a given object and attribute. In this function, we can also supply a third argument that will be the default if the object does not have the given attribute. 
     
 The syntax and parameters for these functions look like this:
     
@@ -898,4 +892,74 @@ The syntax and parameters for these functions look like this:
     
 Above we checked if the attributeless object has the attibute fake_attribute. Since it does not, hasattr() returned False. After that, we used getattr to attempt to retrive other_fake_attribute. Since other_fake_attribute is not a real attribute on attributeless, our call to getattr() returned the supplied default value 800, instead of throwing an AttributeError. 
 
+## Self
+    
+Since we can already use dictionaries to store key-value pairs, using objects for that purpose is not very useful. Instance variables are more powerful when you can guarantee a rigidity to the data the object is holding. 
+    
+This convenience is most apparent when the constructor creates the instance variables, using the arguments passed in to it. If we were creating a search engine, and we wanted to create classes for each separate entry we could return. We'd do that like this:
+    
+    class SearchEngineEntry:
+        def __init__(self, url):
+          self.url = url
+    
+    codecademy = SerchEngineEntry("www.codecademy.com")
+    wikipedia = SearchEngineEntry("www.wikipedia.org")
+    
+    print(codecademy.url) -----------> prints "www.codecademy.com"
+    print(wikipedia.url) ------------> prints "www.wikipedia.org"
+    
+Since the self keyword refers to the object and not the class being called, we can define a secure method on the SearchEngineEntry class that returns the secure link to an entry. 
+    
+class SearchEngineEntry:
+  secure_prefix = "https://"
+  def __init__(self, url):
+    self.url = url
+    
+  def secure(self):
+    return "{prefix}{site}.format(prefix.self.secure_prefix, site=self.url)
+    
+codecademy = SearchEngineEntry("www.codecademy.com")
+wikipedia = SearchEngineEntry("www.wikipedia.org")
+    
+print(codecademy.secure()) ---------------> "https://www.codecademy.com"
+priint(wikipedia.secure()) --------------> ""https://www.wikipedia.org"
+    
+Above we define our secure() method to take just the one required argument, self. We access both the class variable self.secure_prefix and the instance variable self.url to return a secure URL.
+    
+This is the strength of writing object-oriented programs. We can write our clases to structure the data that we need and write methods that will interact with that data in a meaningful way.    
+    
+## Everything is an Object
 
+Attributes can be added to user-defined objects after instantiation, so it is possible for an object to have some attributes that are not explicitly defined in an object's constrctor.  We can use the **dir()** function to investigate an object's attributes at runtime. **dir()** is short for directory and offers an organized presentation of object attributes.
+    
+    class FakeDict:
+      pass
+    
+    fake_dict = FakeDict()
+    fake_dict.attribute = "Cool"
+    
+    dir(fake_dict)------------>Prints ['__class__', '__delattr__', '__dict__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__gt__', '__hash__', '__init__()',       '__init_subclass__', '__le__', '__lt__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', 'attribute']
+    
+That's certainly a lot more attributes than we defined! Python automatically adds a number of attributes to all objects that get created.  These internal attributes are usually indicated by double-underscores. But sure enough, attribute is in that list. 
+    
+Do you remember being able to use **type()** on Python's native data types? This is because they are also objects in Python. Their classes are int, float, str, list and dict. These python classes have special syntax for their instantiation 1, 1.0, "hello", [] and {} specifically. But tese instances are still full-blown object to Python.
+    
+    fun_list = [10, "string", {'abc':True}]
+    
+    type(fun_list) --------------> print <class 'list'>
+    dir(fun_list)  --------------> ['__add__', '__class__', [...], 'append', 'clear', 'copy', 'count', 'extend', 'index', 'insert', 'pop', 'remove', 'reverse', 'sort']
+    
+Above we define a new list. We check it is type and see that is an instantiation of class list. We use dir() to explore its attributes, and it give us a large number of internal python dunder attributes,but, afterward, we get the usual lis methods.
+
+## String Representation
+    
+One of the first things we learn as programmers is how to print out information that we need for debugging. Unfortunately, when we print out an object we get a default representation that seems fairly useless.
+    
+    class Employee():
+        def __init__(self, name):
+          self.name = name
+    
+    argus = Employeee("rgus Filch")
+    print(argus) -------------> /* prints "<__main__.Employee object at 0x104e88390>" */
+    
+    
