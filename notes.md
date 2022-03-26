@@ -463,10 +463,10 @@ class SupportBot:
     
     return will_help
 
-# Create a SupportBot instance
+## Create a SupportBot instance
 SupportConversation = SupportBot()
     
-# Call the .welcome() method SupportConversation.welcome()
+## Call the .welcome() method SupportConversation.welcome()
     
 The first step for any rule-based chatbot is greeting the user and asking them how the chatbot can help. 
     - Get the name of the user
