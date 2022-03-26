@@ -978,5 +978,22 @@ __repr__() can only have one parameter, self, and must return a string. In our E
     print(argus)
 
 We implemented the __repr__() method and had it return the .name attribute of the object. When we printed the object out it simply printed the .name of the object
+
+# Retrieval-Based Chatbots
     
+## Intro to Bag-of-Words
+
+"a bag-of-words language model is a simple-yet-powerful tool to have up your sleeve when working on natural language processing (NLP). The model has many, many use case including:
     
+    - determining topics in a song
+    - filtering spam from your inbox
+    - finding out if a tweet has positive or negative sentiment
+    - creating word clouds
+
+Bag -of-words is a statistical language model based on word coun. A statistical language model is a way for computers to make sense of language based on probability. For example, let's say we have the text:
+
+    "Five fantastic fish flew off to find faraway functions. Maybe find another five fantastic fish?"
+ 
+A statistical language model focused on the starting letter for words might take this text and predict that words are most likely to start with the letter "f" because 11 out of 15 words begin that way. A different statistical model that pays attention to word order might tell us that the word "fish" tends to follow the word "fantastic."
+ 
+A statistical language model focused on the starting letter for words might take this text and predict that words are mos
